@@ -1,0 +1,29 @@
+{
+  "name": "@sosie.js/embed",
+  "version": "1.0.0",
+  "keywords": [
+    "sosie",
+    "embed",
+    "sosiejs"
+  ],
+  "description": "Embed plugin for SoSIE.js",
+  "license": "MIT",
+  "repository": "https://github.com/sosie-js/embed",
+  "main": "./dist/bundle.js",
+  "scripts": {
+    "build": "yarn install;node minify.js",
+    "lint": "eslint src/ --ext .js",
+    "lint:errors": "eslint src/ --ext .js --quiet",
+    "lint:fix": "eslint src/ --ext .js --fix",
+    "lint:init": "eslint src/ --ext .js --init"
+  },
+  "author": {
+    "name": "sosie",
+    "email": "sosie@sos-productions.com"
+  },
+  "dependencies": {
+    "@editorjs/editorjs": "^2.18.0",
+    "@node-minify/core": "^6.0.0",
+    "@node-minify/terser": "^6.0.0"
+  }
+}
