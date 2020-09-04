@@ -2,7 +2,7 @@
 
 ## Building the plugin
 
-To produce the dist/bundle.js for production use the commands:
+To produce the dist/bundle.js for production use the commands: 
 
 '''
 yarn build
