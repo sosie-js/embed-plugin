@@ -4,7 +4,7 @@ const terser = require('@node-minify/terser');
 
 minify({
   compressor: terser,
-  input: 'src/embed.js',
+  input: 'src/index.js',
   output: 'dist/bundle.js',
   callback: function(err, min) {}
 });
