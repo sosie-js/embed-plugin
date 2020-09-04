@@ -7,9 +7,10 @@
     * @Note this has to be triggered after await editor.isReady.
     * @usage Paste a html link outside the editor
     * @author sos-productions.com
-    * @version 1.0
+    * @version 1.1
     * @history
-    *    1.0 - 02.10.20 - Initial version from SoSIE
+    *    1.0 (02.10.2020) - Initial version from SoSIE
+    *    1.1 (04.10.2020) - Error message improved
     * @property {Object} editor - Editor.js API
     **/
 Embed.init = (editor) => {
@@ -116,8 +117,8 @@ Embed.init = (editor) => {
           const index = (Number.isFinite(mode)) ? mode : api.blocks.getCurrentBlockIndex() + 1
           api.blocks.insert('embed', data, config, index, true)
         }
-      } else {
-        alert('No service for this url, check your services config ;\nfor now only ' + servicesName.join(',') + 'are enabled')
+      } else if (url) {
+        alert('No service for this url, check your services config ;\nfor now only ' + servicesName.join(',') + ' are enabled')
       }
     }
   }
@@ -133,9 +134,9 @@ Embed.init = (editor) => {
     * @property {boolean} [custom] - if true, uses userServices config stored in this Helper
     */
 function injectEmbed (url, caption, mode, custom) {
+    
   editor.then(function (editor) {
     let config = Embed.pasteConfig
-
     if (custom) {
       // Dummy bunny example,don't forget to greet SoSie who has bunny id 7 by injecting http://sos-productions.com/7
       // Overrides global config set in editor.config.tools.embed.config,
