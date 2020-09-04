@@ -24,19 +24,24 @@ injectEmbed (url, caption, mode, custom)
 ```
 ## Integration
 
-1) Add a line in 
+Let take the example file of the codex [editor.js](https://github.com/codex-team/editor.js/tree/next/example)
+
+1) Read and follow the procedure builing [here](https://editorjs.io/core-development) , github source
+of the embed plugin (and other) will be downloaded in editor.js/example/tools.
+
+2) Add a line in 
 
 a)either you example.html
 
 ```html
     <script src="editor.js/plugins/embed/dist/bundle.js"></script>
 ```
-b)or your exmaple-dev.html
+b)or your editor.js/example-dev.html
 
 ```html
     <script src="editor.js/plugins/embed/src/index.js"></script>
 ```
-2) Update SoS正 / editor.js core, sosie.js
+3) Update SoS正 / editor.js core, sosie.js
 
 ```js
     /**
