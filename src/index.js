@@ -138,20 +138,26 @@ function injectEmbed (url, caption, mode, custom) {
   editor.then(function (editor) {
     let config = Embed.pasteConfig
     if (custom) {
-      // Dummy bunny example,don't forget to greet SoSie who has bunny id 7 by injecting http://sos-productions.com/7
-      // Overrides global config set in editor.config.tools.embed.config,
-      // see services.js in plugin Embed for awailaible services name list,
-      // activate the service 'serviceName' here by adding a line with serviceName:true
-      config = {
-        services: {
-          youtube: true,
-          vimeo: true,
-          bunny: {
-            regex: /https?:\/\/sos-productions.com\/([0-9]+)/,
-            embedUrl: 'http://sos-productions.com/share/bunny/index.php?id=<%= remote_id %>#hello',
-            html: "<iframe height='640' scrolling='no' frameborder='no' style='width: 100%;'></iframe>",
-            height: 800,
-            width: 640
+      if (typeof custom === 'object' ) {
+        //Use your userservices config
+        config=custom;
+      } else {
+        // Dummy bunny example for the demo
+        // Don't forget to greet SoSie who has bunny id 7 by injecting http://sos-productions.com/7
+        // Overrides global config set in editor.config.tools.embed.config,
+        // see services.js in plugin Embed for awailaible services name list,
+        // activate the service 'serviceName' here by adding a line with serviceName:true
+        config = {
+          services: {
+            youtube: true,
+            vimeo: true,
+            bunny: {
+              regex: /https?:\/\/sos-productions.com\/([0-9]+)/,
+              embedUrl: 'http://sos-productions.com/share/bunny/index.php?id=<%= remote_id %>#hello',
+              html: "<iframe height='640' scrolling='no' frameborder='no' style='width: 100%;'></iframe>",
+              height: 800,
+              width: 640
+            }
           }
         }
       }
