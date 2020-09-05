@@ -1,4 +1,4 @@
-![](https://badgen.net/badge/SoS正/Beta/f2a) ![](https://badgen.net/badge/editor.js/v2.0/blue) ![](https://badgen.net/badge/plugin/v1.0/orange) 
+![](https://badgen.net/badge/SoS正/Beta/f2a) ![](https://badgen.net/badge/editor.js/v2.0/blue) ![](https://badgen.net/badge/plugin/v2.0/orange) 
 
 # Embed Plugin to init the Embed Tool of editor.js
 
@@ -44,33 +44,24 @@ b)or your editor.js/example-dev.html
 3) Update SoS正 / editor.js core, sosie.js
 
 ```js
-    /**
+     /**
      * Initialise editor and plugins
      * 
      * @param {EditorJS} editor - editor js instance
      */
-     async init(editor) {
+     init(editor) {
           
-            try {
-    
-                await editor.isReady;
-
-                //--- Now it is time to init SoSie's plugins, which are init helper for tools ---
-                
-                //This will attach bunny's injector so we will be able
-                //to plants carots where we want in the field of Blocks.
-                //inside in the text where cursor has been positionned (inline mode) 
-                //or after current selected block (block mode)
-                Embed.init(editor);
-                
-                //--------------------------------------------------------------------------------
-            
-            } catch (reason) {
-                console.log(reason);
-                console.warn(`SoSIE editor initialization failed because of ${reason}`)
-            }
-            
-            return editor;
+        //--- Now it is time to init SoSie's plugins, which are init helper for tools ---
+        
+        //This will attach bunny's injector so we will be able
+        //to plants carots where we want in the field of Blocks.
+        //inside in the text where cursor has been positionned (inline mode) 
+        //or after current selected block (block mode)
+        Embed.init(editor);
+        
+        //--------------------------------------------------------------------------------
+              
+        return editor;
      }
 ```
 
