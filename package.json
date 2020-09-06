@@ -25,6 +25,7 @@
     "@editorjs/editorjs": "^2.18.0",
     "@editorjs/embed": "^2.3.1",
     "@node-minify/core": "^6.0.0",
-    "@node-minify/terser": "^6.0.0"
+    "@node-minify/terser": "^6.0.0",
+    "@node-minify/uglify-js": "^6.0.0"
   }
 }

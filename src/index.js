@@ -1,16 +1,16 @@
 
-//import './sosie.css'
-
 /**
     * Install the inline injector manager for the Embed Tool
     *
     * @Note this has to be triggered after await editor.isReady.
     * @usage Paste a html link outside the editor
     * @author sos-productions.com
-    * @version 1.1
+    * @version 2.0
     * @history
     *    1.0 (02.10.2020) - Initial version from SoSIE
     *    1.1 (04.10.2020) - Error message improved
+    *    2.0 (06.10.2020) - Register added
+    * 
     * @property {Object} editor - Editor.js API
     **/
 Embed.init = (editor) => {
@@ -164,3 +164,7 @@ function injectEmbed (url, caption, mode, custom) {
     config
     )
 }
+
+//Register so SoSIe will autoinit.    
+SoSIE.register('Embed');
+    

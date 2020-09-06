@@ -32,6 +32,14 @@
     "@node-minify/utils" "^6.0.0"
     terser "4.8.0"
 
+"@node-minify/uglify-js@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@node-minify/uglify-js/-/uglify-js-6.0.0.tgz#67bfade1b0278d6bf12e4f8810d1d7cfa970e3a0"
+  integrity sha512-0O+L2Kchvwco0/Guf+0QZ3P1AEA1W87KH/wt4rx+DuhhJ4tHPtuUf5bm1NXnU/ZZlawkBIxZasxGsLoMaG8n2g==
+  dependencies:
+    "@node-minify/utils" "^6.0.0"
+    uglify-js "3.10.0"
+
 "@node-minify/utils@^6.0.0":
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/@node-minify/utils/-/utils-6.0.0.tgz#de7b8c355e8600e4d9dd2cd6f67d7841d7ec6a70"
@@ -255,3 +263,8 @@ to-regex-range@^5.0.1:
   integrity sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==
   dependencies:
     is-number "^7.0.0"
+
+uglify-js@3.10.0:
+  version "3.10.0"
+  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.10.0.tgz#397a7e6e31ce820bfd1cb55b804ee140c587a9e7"
+  integrity sha512-Esj5HG5WAyrLIdYU74Z3JdG2PxdIusvj6IWHMtlyESxc7kcDz7zYlYjpnSokn1UbpV0d/QX9fan7gkCNd/9BQA==
