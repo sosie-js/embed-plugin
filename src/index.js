@@ -38,8 +38,9 @@ Embed.init = (editor) => {
             * @property {Object} api - Editor.js API
             * @property {EmbedData} data - private property with Embed data
             * @property {Object} config - config of the services for the tool Embed
+            * @property [string|boolean} interactive - if a string is specified, use this for prompt else default if boolean is true. Default is no interactivity
             */
-    editor.inject.Embed = (mode, data, api, config) => {
+    editor.inject.Embed = (mode, data, api, config, interactive) => {
       Embed.prepare({
         config: config
       })
@@ -51,7 +52,16 @@ Embed.init = (editor) => {
         patterns
       } = Embed.pasteConfig
 
-      const url = prompt('Try your url', data.source)
+        
+      let url = data.source;
+      
+      if(interactive) {
+          if(typeof interactive == 'boolean') {
+            url=prompt('Try your url', url);
+          } else {
+            url=prompt(interactive, url);
+          }
+      }
 
       // Determine the name ot the service from the url
       const found = false
