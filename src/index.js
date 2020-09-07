@@ -5,13 +5,12 @@
     * @Note this has to be triggered after await editor.isReady.
     * @usage Paste a html link outside the editor
     * @author sos-productions.com
-    * @version 2.0
+    * @version 3.0
     * @history
     *    1.0 (02.10.2020) - Initial version from SoSIE
     *    1.1 (04.10.2020) - Error message improved
     *    2.0 (06.10.2020) - Register added
-    *    3.0 (07.10.2020) - Interactive added
-    * 
+    *    3.0 (07.10.2020) - Interactive
     * @property {Object} editor - Editor.js API
     **/
 Embed.init = (editor) => {
@@ -136,15 +135,15 @@ Embed.init = (editor) => {
 }
 
 /**
-    * Embed Block Helper that may hold user services config
+    * Helper that may hold user services config
     *
     * @property {string} url - source URL of embedded content
-    * @property [string|boolean} interactive - if a string is specified, use this for prompt else default if boolean is true. Default is no interactivity
+    * @property {string} embed - URL to source embed page
     * @property {string} caption - content caption
     * @property {string} [mode] - default is set tyo 'inline'
     * @property {boolean} [custom] - if true, uses userServices config stored in this Helper
     */
-function injectEmbed (url, interactive, caption, mode, custom) {
+function injectEmbed (url, caption, mode, custom) {
     
     let config = Embed.pasteConfig
     if (custom) {
@@ -172,8 +171,7 @@ function injectEmbed (url, interactive, caption, mode, custom) {
       caption: caption
     },
     editor,
-    config,
-    interactive
+    config
     )
 }
 
