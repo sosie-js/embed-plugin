@@ -10,6 +10,7 @@
     *    1.0 (02.10.2020) - Initial version from SoSIE
     *    1.1 (04.10.2020) - Error message improved
     *    2.0 (06.10.2020) - Register added
+    *    3.0 (07.10.2020) - Interactive added
     * 
     * @property {Object} editor - Editor.js API
     **/
@@ -135,15 +136,15 @@ Embed.init = (editor) => {
 }
 
 /**
-    * Helper that may hold user services config
+    * Embed Block Helper that may hold user services config
     *
     * @property {string} url - source URL of embedded content
-    * @property {string} embed - URL to source embed page
+    * @property [string|boolean} interactive - if a string is specified, use this for prompt else default if boolean is true. Default is no interactivity
     * @property {string} caption - content caption
     * @property {string} [mode] - default is set tyo 'inline'
     * @property {boolean} [custom] - if true, uses userServices config stored in this Helper
     */
-function injectEmbed (url, caption, mode, custom) {
+function injectEmbed (url, interactive, caption, mode, custom) {
     
     let config = Embed.pasteConfig
     if (custom) {
@@ -171,7 +172,8 @@ function injectEmbed (url, caption, mode, custom) {
       caption: caption
     },
     editor,
-    config
+    config,
+    interactive
     )
 }
 
