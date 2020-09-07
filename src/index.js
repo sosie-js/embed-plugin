@@ -10,7 +10,7 @@
     *    1.0 (02.10.2020) - Initial version from SoSIE
     *    1.1 (04.10.2020) - Error message improved
     *    2.0 (06.10.2020) - Register added
-    * 
+    *    3.0 (07.10.2020) - Interactive
     * @property {Object} editor - Editor.js API
     **/
 Embed.init = (editor) => {

@@ -12,10 +12,10 @@ Provides Embed.init() to initialise Embed tool just after editor isready.
 
 ```js
 /**
-    * Helper that may hold user services config
+    * Embed Block Helper that may hold user services config
     *
     * @property {string} url - source URL of embedded content
-    * @property {string} embed - URL to source embed page
+    * @property [string|boolean} interactive - if a string is specified, use this for prompt else default if boolean is true. Default is no interactivity 
     * @property {string} caption - content caption
     * @property {string} [mode] - default is set tyo 'inline'
     * @property {boolean} [custom] - if true, uses userServices config stored in this Helper
