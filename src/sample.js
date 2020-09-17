@@ -12,6 +12,7 @@ function sampleEmbed(editor) {
         //  Inline injection of a block handled by a user service 'notice custom set to true for that).
         sosie.addMenuItemBtn({
             type:'injectbtn',
+            interactive:false,
             url:'http://sos-productions.com/7',
             mode:'inline',
             custom:true,
@@ -22,6 +23,7 @@ function sampleEmbed(editor) {
         // Injection in Block mode, using youtube service
         sosie.addMenuItemBtn({
             type:'injectbtn',
+            interactive:false,
             url:'https://www.youtube.com/watch?v=NW96wIelVqg',
             mode:'block',
             custom:false,
@@ -32,6 +34,7 @@ function sampleEmbed(editor) {
         // Injection in Block mode, using vimeo service
         sosie.addMenuItemBtn({
             type:'injectbtn',
+            interactive:false,
             url:'https://vimeo.com/357871593',
             mode:'block',
             custom:false,
@@ -42,6 +45,7 @@ function sampleEmbed(editor) {
         // Injection in Block mode,
         sosie.addMenuItemBtn({
             type:'injectbtn',
+            interactive:false,
             url:'https://youtu.be/E8q2kdTeGzo',
             mode:'block',
             custom:false,
@@ -52,6 +56,7 @@ function sampleEmbed(editor) {
         // Injection in Block mode,
         sosie.addMenuItemBtn({
             type:'injectbtn',
+            interactive:false,
             url:'https://www.youtube.com/watch?v=Mg5budPRY1Q',
             mode:'block',
             custom:false,
@@ -62,6 +67,7 @@ function sampleEmbed(editor) {
         // Injection in Block mode,, an other vimeo
         sosie.addMenuItemBtn({
             type:'injectbtn',
+            interactive:true,
             url:'https://vimeo.com/400300749',
             mode:'block',
             custom:false,

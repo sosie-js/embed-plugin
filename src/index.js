@@ -5,7 +5,7 @@
     * @Note this has to be triggered after await editor.isReady.
     * @usage Paste a html link outside the editor
     * @author sos-productions.com
-    * @version 2.0
+    * @version 3.0
     * @history
     *    1.0 (02.10.2020) - Initial version from SoSIE
     *    1.1 (04.10.2020) - Error message improved
