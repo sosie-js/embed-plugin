@@ -5,12 +5,13 @@
     * @Note this has to be triggered after await editor.isReady.
     * @usage Paste a html link outside the editor
     * @author sos-productions.com
-    * @version 3.0
+    * @version 2.0
     * @history
-    *    1.0 (02.10.2020) - Initial version from SoSIE
-    *    1.1 (04.10.2020) - Error message improved
-    *    2.0 (06.10.2020) - Register added
-    *    3.0 (07.10.2020) - Interactive
+    *    1.0 (02.09.2020) - Initial version from SoSIE
+    *    1.1 (04.09.2020) - Error message improved
+    *    1.2 (06.09.2020) - Register added
+    *    1.3 (07.09.2020) - Interactive
+    *    2.0 (17.09.2020) - Date and version fixed
     * @property {Object} editor - Editor.js API
     **/
 Embed.init = (editor) => {
