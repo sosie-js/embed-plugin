@@ -1,4 +1,4 @@
-![](https://badgen.net/badge/SoS正/Beta/f2a) ![](https://badgen.net/badge/editor.js/v2.0/blue) ![](https://badgen.net/badge/plugin/v2.0/orange) 
+![](https://badgen.net/badge/SoS正/Beta/f2a) ![](https://badgen.net/badge/editor.js/v2.0/blue) ![](https://badgen.net/badge/plugin/v2.0.0/orange) 
 
 # Embed Plugin to init the Embed Tool of editor.js
 
@@ -20,7 +20,7 @@ Provides Embed.init() to initialise Embed tool just after editor isready.
     * @property {string} [mode] - default is set tyo 'inline'
     * @property {boolean} [custom] - if true, uses userServices config stored in this Helper
     */
-injectEmbed (url, caption, mode, custom) 
+injectEmbed (url, interactive, caption, mode, custom) 
 ```
 ## Integration
 
