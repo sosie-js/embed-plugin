@@ -9,7 +9,7 @@ function sampleEmbedPlug(editor) {
     
         let sosie=editor.sosie;
         
-     /*   //  Inline injection of a block handled by a user service 'notice custom set to true for that).
+        // Inline injection of a block handled by a user service 'notice custom set to true for that).
         sosie.addMenuItemBtn({
             type:'injectbtn',
             interactive:false,
@@ -19,7 +19,7 @@ function sampleEmbedPlug(editor) {
             title:"I am SoSIE, here are lucky people behind the flags click on it!",
             text:"Bunny in line"
         });
-        
+        /*
         // Injection in Block mode, using vimeo service
         sosie.addMenuItemBtn({
             type:'injectbtn',
@@ -41,18 +41,18 @@ function sampleEmbedPlug(editor) {
             title:"Eternal Fifty Minutes | Coming for You II",
             text:"Eternal Fifty Minutes"
         });*/
-
-        // Injection in Block mode,
+   // Injection in Block mode,
         sosie.addMenuItemBtn({
             type:'injectbtn',
+            interactive: true,
             caption: "Embed interactive injector",
             url:'',
             mode:'block',
-            custom:false,
+            custom:true,
             title:"Embed injector",
             text:"Injector",
-            interactive:'Chooser'
         });
+     
         
     }
 }

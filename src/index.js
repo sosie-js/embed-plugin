@@ -5,7 +5,7 @@
     * @Note this has to be triggered after await editor.isReady.
     * @usage Paste a html link outside the editor
     * @author sos-productions.com
-    * @version 3.0
+    * @version 4.0
     * @history
     *    1.0 (02.09.2020) - Initial version from SoSIE
     *    1.1 (04.09.2020) - Error message improved
@@ -13,6 +13,7 @@
     *    1.3 (07.09.2020) - Interactive
     *    2.0 (17.09.2020) - Date and version fixed
     *    3.0 (10.10.2020) - Wrap into a Class EmbedPlugin
+    *    4.0 (14.10.2020) - Caret save and restore so now inline injections works with injector with an advanced interactive demo
     * @property {Object} editor - Editor.js API
     **/
 
@@ -58,8 +59,10 @@ class EmbedPlugin {
              * @param {Object} api - Editor.js API
              * @param {EmbedData} data - private property with Embed data
              * @param {Object} config - config of the services for the tool Embed
+             * @param {Number} index - block's index specifying in which block to inject
+             * @param {number} caret - at the postion of the caret 
              */
-            function injectEmbedByUrl(url, mode, data, api, config) {
+            function injectEmbedByUrl(url, mode, data, api, config, index, caret) {
                 
                 Embed.prepare({
                     config: config
@@ -114,28 +117,59 @@ class EmbedPlugin {
                     }
 
                     // Build the embed block and fill in with data
-                    const Block = new Embed({
+                    const blockEmbed = new Embed({
                     data: data,
                     api: api
                     })
 
-                    // Helper to inject the Embed block inline at the start on selection
-                    // ie in selection place, no need to hiligh some chars to make inline tools appears
-                    // this is triggered externally by clicking on a menu bar button
-                    function blockInlineInjector (toolBlock) {
-                    const sel = window.getSelection()
-                    const range = sel.getRangeAt(0)
-                    range.insertNode(toolBlock.render())
-                    }
+                    // Kept info, does work here as blocks are div no textarea
+                    // I ignore if it works , not tested
+                    function setCaretPositionTextarea(el, caretPos) {
+
+                      el.value = el.value;
+                      // ^ this is used to not only get "focus", but
+                      // to make sure we don't have it everything -selected-
+                      // (it causes an issue in chrome, and having it doesn't hurt any other browser)
+
+                      if (el !== null) {
+
+                          if (el.createTextRange) {
+                              var range = el.createTextRange();
+                              range.move('character', caretPos);
+                              range.select();
+                              return true;
+                          } else {
+                              // (el.selectionStart === 0 added for Firefox bug)
+                              if (el.selectionStart || el.selectionStart === 0) {
+                                  el.focus();
+                                  el.setSelectionRange(caretPos, caretPos);
+                                  return true;
+                              }
+
+                              else  { // fail city, fortunately this never happens (as far as I've tested) :)
+                                  el.focus();
+                                  return false;
+                              }
+                          }
+                      }
+                  }
+                    
+                    console.log('Insert Block at index block ' + index + ' and caret ' + caret + ' in mode ' + mode);
 
                     if (mode == 'inline') {
-                    // here we assume the cursor is inside a block after a click
-                    blockInlineInjector(Block)
-                    } else {
-                    // mode block
-                    //console.log('API',api);
-                    const index = (Number.isFinite(mode)) ? mode : api.blocks.getCurrentBlockIndex() + 1
-                    api.blocks.insert('embed', data, config, index, true)
+                      
+                      // Restore the caret cursor that has been lost 
+                      // when the Embed panel has been opened
+                      Block.setCaretPosition(index, caret);
+                      
+                      // Inject blockEmbed at the current caret position
+                      var blockElement=blockEmbed.render();
+                      Block.inlineInjector(blockElement);
+                    
+                    } else {// mode block
+                      
+                      api.blocks.insert('embed', data, config, index, true);
+                    
                     }
                 } else if (url) {
                     alert('No service for this url, check your services config ;\nfor now only ' + servicesName.join(',') + ' are enabled')
@@ -185,8 +219,10 @@ class EmbedPlugin {
             * @param {EmbedData} data - private property with Embed data
             * @param {Object} config - config of the services for the tool Embed
             * @param [string|boolean} interactive - if a string is specified, use this for prompt else default if boolean is true. Default is no interactivity
+            * 
+            * @param {number} caret - at the postion of the caret 
             */
-            editor.inject.Embed = (mode, data, api, config, interactive) => {
+            editor.inject.Embed = (mode, data, api, config, interactive, index, caret) => {
                 
                     
                 let url = data.source;
@@ -194,7 +230,7 @@ class EmbedPlugin {
                 if(interactive) {
                  
                     if(notifier) {
-                        
+                      
                       function reject(message) {
                          notifier.show({
                             message: message,
@@ -205,17 +241,19 @@ class EmbedPlugin {
                       }
                       
                       function resolve(sample) {
+                         console.log('Inject using config',config)
                          injectEmbedByUrl(sample.url, sample.mode, {
                             source: sample.url,
                             caption: sample.title
-                          }, api, config);
+                          }, api, config, index, caret);
                       }
-                      
+                        
                       notifier.show({
                         type:'demo',
                         title:'Welcome to the Url Embed injector interactive demo',
                         message:'Type your url ',
                         id:'embed',
+                        layout:'left,bottom',
                         url:'', //default
                         placeholder:'your url',
                         okHandler: function(sample) {
@@ -233,7 +271,7 @@ class EmbedPlugin {
                             interactive:false,
                             url:'http://sos-productions.com/7',
                             mode:'inline',
-                            custom:'true',
+                            custom:true,
                             title:"I am SoSIE, here are lucky people behind the flags click on it!",
                             text:"Bunny gift"
                           },{
@@ -271,15 +309,12 @@ class EmbedPlugin {
                             url=prompt(interactive, url);
                         }
                         if(url)
-                            injectEmbedByUrl(url, mode, data, api, config);
+                            injectEmbedByUrl(url, mode, data, api, config, index, caret);
                     }
                       
-                      
-                      
-                    
                 } else {
                     
-                    injectEmbedByUrl(url, mode, data, api, config);
+                    injectEmbedByUrl(url, mode, data, api, config, index, caret);
                     
                 }
 
@@ -328,13 +363,21 @@ function injectEmbed (url, interactive, caption, mode, custom) {
       }
     }
 
+     // Saved api.blocks.getCurrentBlockIndex() + 1
+    let position = document.getElementById('currentPosition').value;
+    let index = position - 1;
+    
+    let caret=editor.clipboard.blockSelection.in;
+    
     editor.inject.Embed(mode || 'inline', {
       source: url,
       caption: caption
     },
     editor,
     config,
-    interactive
+    interactive,
+    index,
+    caret
     )
 }
 
