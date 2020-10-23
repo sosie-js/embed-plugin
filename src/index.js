@@ -1,23 +1,24 @@
+/*!
+* Install the inline injector manager for the Embed Tool
+* @version 4.0.0
+* @package https://github.com/sosie-js/embed
+*/
 
 /**
-    * Install the inline injector manager for the Embed Tool
-    *
-    * @Note this has to be triggered after await editor.isReady.
-    * @usage Paste a html link outside the editor
-    * @author sos-productions.com
-    * @version 4.0
-    * @history
-    *    1.0 (02.09.2020) - Initial version from SoSIE
-    *    1.1 (04.09.2020) - Error message improved
-    *    1.2 (06.09.2020) - Register added
-    *    1.3 (07.09.2020) - Interactive
-    *    2.0 (17.09.2020) - Date and version fixed
-    *    3.0 (10.10.2020) - Wrap into a Class EmbedPlugin
-    *    4.0 (14.10.2020) - Caret save and restore so now inline injections works with injector with an advanced interactive demo
-    * @property {Object} editor - Editor.js API
-    **/
-
-
+* @Note this has to be triggered after await editor.isReady.
+* @usage Paste a html link outside the editor
+* @author sos-productions.com
+* 
+* @history
+*    1.0.0 (02.09.2020) - Initial version from SoSIE
+*    1.1.0 (04.09.2020) - Error message improved
+*    1.2.0 (06.09.2020) - Register added
+*    1.3.0 (07.09.2020) - Interactive
+*    2.0.0 (17.09.2020) - Date and version fixed
+*    3.0.0 (10.10.2020) - Wrap into a Class EmbedPlugin
+*    4.0.0 (14.10.2020) - Caret save and restore so now inline injections works with injector with an advanced interactive demo
+* @property {Object} editor - Editor.js API
+**/
 
 /**
  * Embed plugin
