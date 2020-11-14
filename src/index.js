@@ -1,7 +1,7 @@
 /*!
 * Install the inline injector manager for the Embed Tool
 * @version 4.0.0
-* @package https://github.com/sosie-js/embed
+* @package https://github.com/sosie-js/embed-plugin
 */
 
 /**
